@@ -1,26 +1,103 @@
-# AARC Lane Detection
+Skip to content
+Navigation Menu
+blair-aitken
+/
+AARC_lane_detection
 
-## Overview
+Type / to search
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Editing README.md in AARC_lane_detection
+BreadcrumbsAARC_lane_detection
+/
+README.md
+in
+main
 
-This project detects lane lines in video footage captured from a GoPro HERO11 mounted on the outside of a vehicle. This setup allows for consistent lane tracking and accurate measurement of lane position relative to the vehicle’s center. 
+Edit
 
-## Dependencies
+Preview
+Indent mode
 
-This project requires the following dependencies:
+Spaces
+Indent size
 
-* Python
-* OpenCV
-* NumPy
-* Matplotlib (for data visualisation)
+2
+Line wrap mode
 
-## Camera Calibration
-
-Given the GoPro HERO11’s wide-angle lens, calibration is essential to correct lens distortion and ensure accurate lane measurements. The following calibration steps use a chessboard pattern to generate the necessary camera parameters.
-
-### Calibration Process
-
-1. **Load Calibration Video:** The calibration script (`camera_calibration.py`) loads a video of a chessboard pattern (`calibration_video.mkv`), where each frame displays the chessboard in various positions to capture lens distortion from multiple angles.
-   
+Soft wrap
+Editing README.md file contents
+Selection deleted
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
 2. **Capture Snapshots:** While playing the video, press **'s'** to save frames with the chessboard visible in different locations. Aim to take between 10 to 20 snapshots, as these will be used for calculating calibration parameters. Each snapshot is saved automatically in the `calibration_images` folder.
 
 3. **Compute Camera Matrix and Distortion Coefficients:** The script then loads the saved snapshots, detects chessboard corners, and calculates the camera matrix and distortion coefficients using `cv2.calibrateCamera()`. These calibration parameters allow for correcting distortion in subsequent frames.
@@ -54,11 +131,9 @@ Lane lines are detected in each frame using OpenCV’s image processing tools:
 
 ## False Readings
 
-Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections.
+Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections. (Screenshot here to illustrate the effect.)
 
-
-<img src="https://github.com/user-attachments/assets/01feb17e-837c-4de8-b29a-780078a7fc4c" alt="Your image title" width="500"/>
-
+![false_readings](https://github.com/user-attachments/assets/415d3da4-2196-4e5c-bcd0-460cce0b3701)
 
 To address this, a **frequency threshold in Hz** has been implemented. This threshold identifies and removes data segments where the frequency of lane position changes exceeds a natural range, indicating likely false readings rather than genuine lane shifts. Here’s how this process works:
 
@@ -85,3 +160,8 @@ The distance from the vehicle to the lane line is measured in pixels and convert
 
 ## Precision Test
 
+
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+No file chosen
+Attach files by dragging & dropping, selecting or pasting them.
+Editing AARC_lane_detection/README.md at main · blair-aitken/AARC_lane_detection
