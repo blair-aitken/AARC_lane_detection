@@ -52,11 +52,11 @@ Lane lines are detected in each frame using OpenCV’s image processing tools:
 
 ![lane_detection_process](https://github.com/user-attachments/assets/65d571fa-4062-4bad-a922-2d8235820cfc)
 
-## Removing False Readings Based on Frequency of Change
+## False Readings
 
 Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections. (Screenshot here to illustrate the effect.)
 
-![false_readings](https://github.com/user-attachments/assets/01feb17e-837c-4de8-b29a-780078a7fc4c)
+![false_readings](https://github.com/user-attachments/assets/01feb17e-837c-4de8-b29a-780078a7fc4c | width=200)
 
 To address this, a **frequency threshold in Hz** has been implemented. This threshold identifies and removes data segments where the frequency of lane position changes exceeds a natural range, indicating likely false readings rather than genuine lane shifts. Here’s how this process works:
 
