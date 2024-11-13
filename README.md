@@ -49,6 +49,10 @@ Lane lines are detected in each frame using OpenCV’s image processing tools:
 
 ![lane_detection_process](https://github.com/user-attachments/assets/65d571fa-4062-4bad-a922-2d8235820cfc)
 
+This detection process is applied to each frame of the video one-by-one, allowing accurate tracking of lane positions across the entire duration of the footage.
+
+![sample](https://github.com/user-attachments/assets/b6dd6ee8-80d4-439d-bff4-607770517646)
+
 ## False Readings
 
 Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections. (Screenshot here to illustrate the effect.)
