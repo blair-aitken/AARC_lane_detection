@@ -11,6 +11,7 @@ This project requires the following dependencies:
 * Python
 * OpenCV
 * NumPy
+* Matplotlib (for data visualisation)
 
 ## Camera Calibration
 
@@ -42,12 +43,14 @@ The resulting calibration data can then be applied to correct lens distortion in
 
 Lane lines are detected in each frame using OpenCV’s image processing tools:
 
-1. **Color masking:** Isolates the white lane lines by applying a color filter to highlight lane lines and reduce background noise.
+1.	**Color filtering:** A color mask is applied to isolate the white lane lines in the HSV color space, while reducing background noise. Shadows and lighting variations are accounted for by setting a wider range in brightness levels. Specifically:
+* Lower and upper HSV thresholds are adjusted to capture white even under shadows.
+* aThis allows for consistent detection of lane lines under varying lighting conditions.
 2. **Morphological operations:** Cleans up the color mask by removing small noise and closing gaps in the lane lines for more consistent detection.
 3. **Canny edge detection:** Identifies edges within the cleaned-up mask, making lane lines stand out.
 4. **Line detection (hough transform):** Detects straight lines in the edge-detected image, filtering for horizontal lines that likely correspond to lane lines.
 
-![lane_detection_process drawio](https://github.com/user-attachments/assets/b670773b-aa76-4fec-9c55-8d05b3582961)
+![lane_detection_process](https://github.com/user-attachments/assets/65d571fa-4062-4bad-a922-2d8235820cfc)
 
 ## Vehicle Position Measurement
 
