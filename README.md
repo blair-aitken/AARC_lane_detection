@@ -85,9 +85,3 @@ The distance from the vehicle to the lane line is measured in pixels and convert
 
 
 ## Precision Test
-
-
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-No file chosen
-Attach files by dragging & dropping, selecting or pasting them.
-Editing AARC_lane_detection/README.md at main · blair-aitken/AARC_lane_detection
