@@ -72,7 +72,7 @@ Lane position is measured relative to a defined reference point (i.e., the edge 
 
 ## False Readings
 
-Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections. (Screenshot here to illustrate the effect.)
+Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections.
 
 ![false_readings](https://github.com/user-attachments/assets/415d3da4-2196-4e5c-bcd0-460cce0b3701)
 
