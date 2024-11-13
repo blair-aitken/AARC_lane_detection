@@ -36,7 +36,7 @@ Run `camera_calibration.py` to perform camera calibration. Ensure `calibration_v
 
 The resulting calibration data can then be applied to correct lens distortion in your main video footage, ensuring accurate lane position measurements.
 
-![calibration_example drawio (1)](https://github.com/user-attachments/assets/c8a0e75a-594b-44ff-af0f-96271b59085e)
+![calibration_process](https://github.com/user-attachments/assets/64fdae40-233c-4939-81a7-23d8e52bf212)
 
 ## Lane Line Detection
 
