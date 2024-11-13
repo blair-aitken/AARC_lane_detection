@@ -44,8 +44,8 @@ The resulting calibration data can then be applied to correct lens distortion in
 Lane lines are detected in each frame using OpenCV’s image processing tools:
 
 1.	**Color filtering:** A color mask is applied to isolate the white lane lines in the HSV color space, while reducing background noise. Shadows and lighting variations are accounted for by setting a wider range in brightness levels. Specifically:
-   * Lower and upper HSV thresholds are adjusted to capture white even under shadows.
-   * This allows for consistent detection of lane lines under varying lighting conditions.
+   - Lower and upper HSV thresholds are adjusted to capture white even under shadows.
+   - This allows for consistent detection of lane lines under varying lighting conditions.
 2. **Morphological operations:** Cleans up the color mask by removing small noise and closing gaps in the lane lines for more consistent detection.
 3. **Canny edge detection:** Identifies edges within the cleaned-up mask, making lane lines stand out.
 4. **Line detection (hough transform):** Detects straight lines in the edge-detected image, filtering for horizontal lines that likely correspond to lane lines.
