@@ -16,7 +16,7 @@ Given the GoPro HERO11’s wide-angle lens, calibration is essential to correct 
 
 ### Calibration Process
 
-1.	**Load Calibration Video:** The calibration script ('camera_calibration.py') loads a video of a chessboard pattern (calibration_video.mkv), where each frame displays the chessboard in various positions to capture lens distortion from multiple angles.
+1.	**Load Calibration Video:** The calibration script (`camera_calibration.py`) loads a video of a chessboard pattern (calibration_video.mkv), where each frame displays the chessboard in various positions to capture lens distortion from multiple angles.
    
 3. **Capture Snapshots:** While playing the video, press **'s'** to save frames with the chessboard visible in different locations. Aim to take between 10 to 20 snapshots, as these will be used for calculating calibration parameters. Each snapshot is saved automatically in the `calibration_images` folder.
 
