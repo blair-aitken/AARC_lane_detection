@@ -52,7 +52,27 @@ Lane lines are detected in each frame using OpenCV’s image processing tools:
 
 ![lane_detection_process](https://github.com/user-attachments/assets/65d571fa-4062-4bad-a922-2d8235820cfc)
 
+## Removing False Readings Based on Frequency of Change
+
+Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections. (Screenshot here to illustrate the effect.)
+
+![false_readings](https://github.com/user-attachments/assets/01feb17e-837c-4de8-b29a-780078a7fc4c)
+
+To address this, a **frequency threshold in Hz** has been implemented. This threshold identifies and removes data segments where the frequency of lane position changes exceeds a natural range, indicating likely false readings rather than genuine lane shifts. Here’s how this process works:
+
+1. **Frequency Analysis of Lane Position Changes**: The system calculates the frequency of significant lane position changes over time, using a sliding window (e.g., every 50 frames). High frequencies often correspond to erratic fluctuations caused by lighting artifacts rather than actual vehicle movement.
+
+2. **Setting the Frequency Threshold**: A frequency threshold is defined based on expected lane stability. If the frequency of changes in lane position exceeds this threshold (e.g., 15 Hz), it is flagged as a potential false reading. This threshold allows the system to differentiate between normal lane variations and rapid fluctuations likely due to environmental interference.
+
+3. **Filtering Out High-Frequency Segments**: Any segment with a frequency above the threshold is:
+   - **Excluded from Further Analysis**: These flagged sections are not included in the primary analysis to ensure they don’t impact lane tracking accuracy.
+   - **Visually Highlighted**: High-frequency segments are plotted in a different color (e.g., red) on visualizations, allowing for easy identification and further inspection if needed.
+
+By applying this frequency-based filtering, the system can reduce the impact of lighting-induced false readings and maintain reliable lane detection. This approach helps ensure that only genuine lane position data is analyzed, improving the robustness of the system even in challenging lighting conditions.
+
 ## Vehicle Position Measurement
+
+The distance from the vehicle to the lane line is measured in pixels and converted to centimeters using a pixel-to-centimeter conversion factor.
 
 
 ## Converting Pixels to Real-World Measurement
