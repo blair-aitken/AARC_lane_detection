@@ -14,17 +14,17 @@ This project requires the following dependencies:
 
 Given the GoPro HERO11’s wide-angle lens, calibration is essential to correct lens distortion and ensure accurate lane measurements. The following calibration steps use a chessboard pattern to generate the necessary camera parameters.
 
-### Calibration Process
+### Calibration process
 
-1.	**Load Calibration Video:** The calibration script (`camera_calibration.py`) loads a video of a chessboard pattern (calibration_video.mkv), where each frame displays the chessboard in various positions to capture lens distortion from multiple angles.
+1.	**Load calibration video:** The calibration script (`camera_calibration.py`) loads a video of a chessboard pattern (calibration_video.mkv), where each frame displays the chessboard in various positions to capture lens distortion from multiple angles.
    
-3. **Capture Snapshots:** While playing the video, press **'s'** to save frames with the chessboard visible in different locations. Aim to take between 10 to 20 snapshots, as these will be used for calculating calibration parameters. Each snapshot is saved automatically in the `calibration_images` folder.
+3. **Capture snapshots:** While playing the video, press **'s'** to save frames with the chessboard visible in different locations. Aim to take between 10 to 20 snapshots, as these will be used for calculating calibration parameters. Each snapshot is saved automatically in the `calibration_images` folder.
 
-4. **Compute Camera Matrix and Distortion Coefficients:** The script then loads the saved snapshots, detects chessboard corners, and calculates the camera matrix and distortion coefficients using `cv2.calibrateCamera()`. These calibration parameters allow for correcting distortion in subsequent frames.
+4. **Compute camera matrix and distortion coefficients:** The script then loads the saved snapshots, detects chessboard corners, and calculates the camera matrix and distortion coefficients using `cv2.calibrateCamera()`. These calibration parameters allow for correcting distortion in subsequent frames.
 
-5. **Save Calibration Data:** The camera matrix and distortion coefficients are saved to a file (`calibration_data.npz`) for later use in undistorting the video frames.
+5. **Save calibration data:** The camera matrix and distortion coefficients are saved to a file (`calibration_data.npz`) for later use in undistorting the video frames.
 
-### Example Usage
+### Example usage
 
 Run `camera_calibration.py` to perform camera calibration. Ensure `calibration_video.mkv` is located in the project directory. The script will guide you through capturing the snapshots needed for calibration.
 
@@ -37,6 +37,8 @@ The resulting calibration data can then be applied to correct lens distortion in
 ![calibration_process](https://github.com/user-attachments/assets/64fdae40-233c-4939-81a7-23d8e52bf212)
 
 ## Lane Line Detection
+
+### Detecting lane lines in single frames
 
 Lane lines are detected in each frame using OpenCV’s image processing tools:
 
@@ -58,8 +60,9 @@ Lane lines are detected in each frame using OpenCV’s image processing tools:
     - **minLineLength**: The minimum length of a detected line segment, set to 100 pixels to avoid detecting short, irrelevant lines.
     - **maxLineGap**: The maximum gap between points on a line for them to be connected, set to 50 pixels to ensure that continuous lane lines are detected.
 
-
 ![lane_detection_process](https://github.com/user-attachments/assets/65d571fa-4062-4bad-a922-2d8235820cfc)
+
+### WHole video
 
 This detection process is applied to each frame of the video one-by-one, allowing accurate tracking of lane positions across the entire duration of the footage.
 
