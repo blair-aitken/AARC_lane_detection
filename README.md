@@ -40,18 +40,24 @@ The resulting calibration data can then be applied to correct lens distortion in
 
 Lane lines are detected in each frame using OpenCV’s image processing tools:
 
-```
-function test() {
-  console.log("notice the blank line before this function?");
-}
-```
+1. **Color filtering:** The `cv2.inRange()` function is used to create a mask that isolates white lane lines within a specified HSV color range. By setting lower and upper HSV thresholds, the mask can capture white areas even under shadows or changing light conditions. This step helps separate lane lines from the background:
+    - Lower and upper HSV thresholds are adjusted to include a wider brightness range, accommodating varying lighting conditions.
+    - This enables consistent detection of lane lines despite lighting variations on the road.
 
-1.	**Color filtering:** A color mask is applied to isolate the white lane lines in the HSV color space, while reducing background noise. Shadows and lighting variations are accounted for by setting a wider range in brightness levels. Specifically:
-    - Lower and upper HSV thresholds are adjusted to capture white even under shadows.
-    - This allows for consistent detection of lane lines under varying lighting conditions.
-2. **Morphological operations:** Cleans up the color mask by removing small noise and closing gaps in the lane lines for more consistent detection.
-3. **Canny edge detection:** Identifies edges within the cleaned-up mask, making lane lines stand out.
-4. **Line detection (hough transform):** Detects straight lines in the edge-detected image, filtering for horizontal lines that likely correspond to lane lines.
+2. **Morphological operations:** The `cv2.morphologyEx()` function is applied with morphological transformations, such as closing (to fill small gaps) and opening (to remove small noise) within the mask. A rectangular kernel is used to control the extent of these operations:
+    - **Closing** fills small gaps in the lane lines, making them more continuous and easier to detect as single lines.
+    - **Opening** removes small specks of noise that may interfere with edge detection, ensuring a cleaner mask for further processing.
+
+3. **Canny edge detection:** The `cv2.Canny()` function is used to detect edges within the cleaned-up mask. By applying a Gaussian blur to the mask before edge detection, the `Canny()` function can better identify strong edges (such as lane lines) while reducing noise from less prominent edges:
+    - The function takes two thresholds (50 and 150) to filter edges based on intensity, making the lane lines stand out more clearly.
+
+4. **Line detection:** The `cv2.HoughLinesP()` function is used to detect straight line segments within the edge-detected image. This function uses a probabilistic Hough Transform to find line segments that match specified parameters:
+    - **rho**: The distance resolution of the accumulator, set to 1 pixel.
+    - **theta**: The angle resolution, set to a small value to capture horizontal lines.
+    - **threshold**: The minimum number of intersections needed to detect a line.
+    - **minLineLength**: The minimum length of a detected line segment, set to 100 pixels to avoid detecting short, irrelevant lines.
+    - **maxLineGap**: The maximum gap between points on a line for them to be connected, set to 50 pixels to ensure that continuous lane lines are detected.
+
 
 ![lane_detection_process](https://github.com/user-attachments/assets/65d571fa-4062-4bad-a922-2d8235820cfc)
 
