@@ -1,108 +1,28 @@
-Skip to content
-Navigation Menu
-blair-aitken
-/
-AARC_lane_detection
+## Overview
 
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Editing README.md in AARC_lane_detection
-BreadcrumbsAARC_lane_detection
-/
-README.md
-in
-main
+This project detects lane lines in video footage captured from a GoPro HERO11 mounted on the outside of a vehicle. This setup allows for consistent lane tracking and accurate measurement of lane position relative to the vehicle’s center.
 
-Edit
+## Dependencies
 
-Preview
-Indent mode
+This project requires the following dependencies:
+* Python
+* OpenCV
+* NumPy
+* Matplotlib (for data visualization)
 
-Spaces
-Indent size
+## Camera Calibration
 
-2
-Line wrap mode
+Given the GoPro HERO11’s wide-angle lens, calibration is essential to correct lens distortion and ensure accurate lane measurements. The following calibration steps use a chessboard pattern to generate the necessary camera parameters.
 
-Soft wrap
-Editing README.md file contents
-Selection deleted
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-2. **Capture Snapshots:** While playing the video, press **'s'** to save frames with the chessboard visible in different locations. Aim to take between 10 to 20 snapshots, as these will be used for calculating calibration parameters. Each snapshot is saved automatically in the `calibration_images` folder.
+### Calibration Process
 
-3. **Compute Camera Matrix and Distortion Coefficients:** The script then loads the saved snapshots, detects chessboard corners, and calculates the camera matrix and distortion coefficients using `cv2.calibrateCamera()`. These calibration parameters allow for correcting distortion in subsequent frames.
+1.	**Load Calibration Video:** The calibration script ('camera_calibration.py') loads a video of a chessboard pattern (calibration_video.mkv), where each frame displays the chessboard in various positions to capture lens distortion from multiple angles.
+   
+3. **Capture Snapshots:** While playing the video, press **'s'** to save frames with the chessboard visible in different locations. Aim to take between 10 to 20 snapshots, as these will be used for calculating calibration parameters. Each snapshot is saved automatically in the `calibration_images` folder.
 
-4. **Save Calibration Data:** The camera matrix and distortion coefficients are saved to a file (`calibration_data.npz`) for later use in undistorting the video frames.
+4. **Compute Camera Matrix and Distortion Coefficients:** The script then loads the saved snapshots, detects chessboard corners, and calculates the camera matrix and distortion coefficients using `cv2.calibrateCamera()`. These calibration parameters allow for correcting distortion in subsequent frames.
+
+5. **Save Calibration Data:** The camera matrix and distortion coefficients are saved to a file (`calibration_data.npz`) for later use in undistorting the video frames.
 
 ### Example Usage
 
