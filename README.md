@@ -64,7 +64,7 @@ Lane lines are detected in each frame using OpenCV’s image processing tools:
 
 ### Tracking lane lines across the entire video
 
-This detection process is applied to each frame of the video one-by-one, allowing accurate tracking of lane positions across the entire duration of the footage.
+This detection process is applied to each frame of the video one-by-one, allowing accurate tracking of lane positions across the entire duration of the video.
 
 Lane position is measured relative to a defined reference point (i.e., the edge of the wheel) directly vertically to the closest detected lane line, ensuring measurements are taken from a consistent position in each frame. These measurements are initially captured in pixels and later converted to centimeters, providing accurate real-world distance measurements.
 
