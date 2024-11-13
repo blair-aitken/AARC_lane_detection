@@ -65,8 +65,6 @@ This detection process is applied to each frame of the video one-by-one, allowin
 
 Lane position is measured relative to a specified point (i.e., the edge of the wheel) directly vertically to the closest detected lane line, ensuring measurements are taken from a consistent position in each frame. These measurements are initially captured in pixels and later converted to centimeters, providing accurate real-world distance measurements.
 
-![sample](https://github.com/user-attachments/assets/b6dd6ee8-80d4-439d-bff4-607770517646)
-
 ## False Readings
 
 Occasionally, due to varying lighting conditions, the lane detection system may pick up false readings. For example, shadows, reflections, or direct sunlight can cause sudden changes in detected lane positions, leading to temporary false detections. (Screenshot here to illustrate the effect.)
