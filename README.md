@@ -30,7 +30,7 @@ Run `camera_calibration.py` to perform camera calibration. Ensure `calibration_v
 
 **Distortion correction:** The calibration data is applied to each frame using cv2.undistort() to correct distortion, providing a consistent and clear view of the lane lines.
 
-### Distortion Correction Example
+### Distortion correction example
 
 The resulting calibration data can then be applied to correct lens distortion in your main video footage, ensuring accurate lane position measurements.
 
@@ -62,7 +62,7 @@ Lane lines are detected in each frame using OpenCV’s image processing tools:
 
 ![lane_detection_process](https://github.com/user-attachments/assets/65d571fa-4062-4bad-a922-2d8235820cfc)
 
-### WHole video
+### Tracking lane lines across the entire video
 
 This detection process is applied to each frame of the video one-by-one, allowing accurate tracking of lane positions across the entire duration of the footage.
 
